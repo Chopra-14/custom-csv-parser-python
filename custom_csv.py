@@ -1,4 +1,4 @@
-# custom_csv.py
+
 """
 Custom CSV reader and writer implemented from scratch.
 
@@ -42,8 +42,7 @@ class CustomCsvReader:
 
         while True:
             ch = self.file.read(1)
-
-            # EOF
+            
             if ch == "":
                 self._eof = True
                 if field_chars or row:
@@ -51,13 +50,13 @@ class CustomCsvReader:
                     return row
                 raise StopIteration
 
-            # Quote handling
+
             if ch == self.quotechar:
                 if not in_quotes:
-                    # Begin quoted field
+                  
                     in_quotes = True
                 else:
-                    # Inside quotes -> check escaped quote
+                  
                     next_ch = self.file.read(1)
                     if next_ch == self.quotechar:
                         field_chars.append(self.quotechar)
@@ -71,12 +70,12 @@ class CustomCsvReader:
                 if in_quotes:
                     continue
 
-            # Inside quotes
+          
             if in_quotes:
                 field_chars.append(ch)
                 continue
 
-            # Outside quotes
+           
             if ch == self.delimiter:
                 row.append("".join(field_chars))
                 field_chars = []
