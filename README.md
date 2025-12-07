@@ -99,6 +99,9 @@ This script creates test data (10,000 rows × 5 columns) and measures the averag
 
 ---
 
+![Benchmark Results](images/benchmark.png)
+
+
 ## 6. Benchmark Analysis
 
 The built-in `csv` module is faster, which is expected because it is implemented in C.
