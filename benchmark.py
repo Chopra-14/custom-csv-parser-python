@@ -62,8 +62,6 @@ def main() -> None:
     temp_std = "benchmark_std.csv"
     temp_custom = "benchmark_custom.csv"
     runs = 3
-
-    # Writer benchmarks
     std_write = timeit.timeit(
         lambda: write_with_std(temp_std, dataset),
         number=runs,
@@ -73,8 +71,7 @@ def main() -> None:
         lambda: write_with_custom(temp_custom, dataset),
         number=runs,
     ) / runs
-
-    # Reader benchmarks
+ 
     std_read = timeit.timeit(
         lambda: read_with_std(temp_std),
         number=runs,
@@ -85,7 +82,7 @@ def main() -> None:
         number=runs,
     ) / runs
 
-    # Clean up temp files
+
     if os.path.exists(temp_std):
         os.remove(temp_std)
     if os.path.exists(temp_custom):
