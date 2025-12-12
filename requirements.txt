@@ -1,2 +1,1 @@
-# This project uses only the Python standard library.
-# No external dependencies are required.
+# No external dependencies. Python 3.11 tested.
