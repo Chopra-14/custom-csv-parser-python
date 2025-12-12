@@ -96,7 +96,7 @@ class CustomCsvWriter:
     """
     Custom CSV writer that writes CSV rows and escapes fields properly.
     """
-
+    
     def __init__(
         self,
         file_obj: TextIO,

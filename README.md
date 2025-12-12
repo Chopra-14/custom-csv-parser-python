@@ -32,7 +32,7 @@ cd custom-csv-parser-python
 
 ```bash
 python -m venv venv
-source venv/Scripts/activate   
+source venv/Scripts/activate
 ```
 
 ### Install dependencies
@@ -99,8 +99,9 @@ This script creates test data (10,000 rows × 5 columns) and measures the averag
 
 ---
 
-![Benchmark Results](images/benchmark.png)
+![Benchmark Results](images/benchmark_results.png)
 
+---
 
 ## 6. Benchmark Analysis
 
@@ -139,9 +140,72 @@ The output matches what Python’s `csv.reader` produces.
 
 ---
 
-## 8. References
+## 8. Screenshots
 
-These resources helped me understand how CSV rules work:
+### 1. Project Setup (Git + Virtual Environment)
+
+![Setup](images/01_git_and_venv_setup.png)
+
+### 2. Project Folder Structure
+
+![Structure](images/02_project_structure.png)
+
+### 3. CustomCsvReader – Core Parsing Logic
+
+![Reader Logic](images/03_custom_reader_code.png)
+
+### 4. CustomCsvWriter – Escaping & Quoting Logic
+
+![Writer Code](images/04_custom_writer_code.png)
+![Writer Logic](images/04_a_custom_writer_core_logic.png)
+
+### 5. Sample Test CSV File
+
+![Test CSV](images/05_test_csv_file.png)
+
+### 6. Reader Output vs Standard CSV Output
+
+![Reader Output](images/06_reader_output_vs_standard.png)
+
+### 7. Benchmark Results
+
+![Benchmark](images/07_benchmark_results.png)
+
+---
+
+## 9. Flow Diagram
+
+```
+          ┌──────────────┐
+          │   CSV File   │
+          └──────┬───────┘
+                 │
+                 ▼
+        ┌─────────────────────┐
+        │   CustomCsvReader   │
+        │  (character parser) │
+        └─────────┬───────────┘
+                  │
+                  ▼
+          ┌────────────────┐
+          │   Parsed Rows  │
+          └────────┬───────┘
+                   │
+                   ▼
+        ┌─────────────────────┐
+        │   CustomCsvWriter   │
+        │  (escape + quote)   │
+        └─────────┬───────────┘
+                  │
+                  ▼
+          ┌────────────────┐
+          │   CSV Output   │
+          └────────────────┘
+```
+
+---
+
+## 10. References
 
 * Python `csv` module documentation
 * RFC 4180 (CSV format rules)
@@ -149,7 +213,7 @@ These resources helped me understand how CSV rules work:
 
 ---
 
-## 9. Conclusion
+## 11. Conclusion
 
 This project helped me understand how CSV parsing works internally.
 Writing my own reader and writer showed me how much logic is involved in handling edge cases like quotes and newlines.
